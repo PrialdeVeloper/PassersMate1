@@ -8,6 +8,7 @@
 		if($link){
 			getSuccess();
 		}
+
 	}
 	
 	function getSuccess(){
@@ -15,7 +16,7 @@
 			$link = file_get_contents('https://api.apify.com/v1/D2snxaPr7CjCRFeza/crawlers/D9bWvatbohKE49Yjc/lastExec?token=SDQ8LguNHxfd7bzcrAmsKgQLw');
 			$url = json_decode($link,true);
 		} 
-		while ($url['status'] !== 'SUCCEEDED');
+		while ($url['status'] != 'SUCCEEDED');
 		getResult();
 		}
 
@@ -34,7 +35,7 @@
 					$var = $errCode['loadErrorCode'];
 				}
 				if($var != null){
-					usleep(3000);
+					usleep(5000);
 					startExecution();
 				}
 				else{
